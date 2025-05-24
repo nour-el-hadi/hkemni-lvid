@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>طلب زواج</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h1, h2 {
+      color: #d63384;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #e0e0e0;
+      color: black;
+    }
+
+    .conditionsPage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      height: 100vh;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .conditionsPage h2 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .line {
+      width: 80%;
+      height: 30px;
+      border-bottom: 2px dashed #d63384;
+      margin: 15px 0;
+    }
+
+    .congratsPage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    .heart {
+      font-size: 150px;
+      color: #e25555;
+      animation: pulse 1s infinite;
+    }
+
+    .congratsPage h1 {
+      font-size: 3em;
+      color: #d63384;
+      margin-top: 20px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الصفحة الرئيسية -->
+  <div class="container" id="proposal">
+    <h1>هل تقبلين الزواج بي ؟</h1>
+    <div class="buttons">
+      <button id="yesBtn">نعم</button>
+      <button id="noBtn">لا</button>
+    </div>
+  </div>
+
+  <!-- صفحة الشروط -->
+  <div class="conditionsPage" id="conditionsPage">
+    <h2>لقد قبلتي الزواج، هاهي الشروط:</h2>
+    <div class="line">الحشمة و السترة و الحجاب أساسيان في حياتك</div>
+    <div class="line">تكوني عاقلة النكد حاجة قليلة برك</div>
+    <div class="line">تتعاملي معايا بلطف تحتارميني و نحتارمك</div>
+    <div class="line">دينك وصلاتك بلاما نوصيك عليهم</div>
+    <div class="line">والديا كيما والديك و والديك كيما والديا</div>
+    <div class="line">الخدمة مكاش و بدون نقاش</div>
+    <div class="buttons">
+      <button id="yesBtn2">موافقة</button>
+      <button id="noBtn2">لا</button>
+    </div>
+  </div>
+
+  <!-- صفحة التهنئة -->
+  <div class="congratsPage" id="congratsPage">
+    <div class="heart">❤️</div>
+    <h1>مبروك علينا</h1>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn2 = document.getElementById('yesBtn2');
+    const noBtn2 = document.getElementById('noBtn2');
+    const proposal = document.getElementById('proposal');
+    const conditionsPage = document.getElementById('conditionsPage');
+    const congratsPage = document.getElementById('congratsPage');
+
+    yesBtn.addEventListener('click', () => {
+      proposal.style.display = 'none';
+      conditionsPage.style.display = 'flex';
+    });
+
+    noBtn.addEventListener('click', () => {
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+
+    noBtn2.addEventListener('click', () => {
+      const maxX = window.innerWidth - noBtn2.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn2.offsetHeight - 20;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn2.style.position = 'fixed';
+      noBtn2.style.left = `${randomX}px`;
+      noBtn2.style.top = `${randomY}px`;
+    });
+
+    yesBtn2.addEventListener('click', () => {
+      conditionsPage.style.display = 'none';
+      congratsPage.style.display = 'flex';
+    });
+  </script>
+
+</body>
+</html>
